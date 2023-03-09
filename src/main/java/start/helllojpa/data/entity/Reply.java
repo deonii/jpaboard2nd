@@ -1,4 +1,4 @@
-package start.helllojpa.entity;
+package start.helllojpa.data.entity;
 
 
 import javax.persistence.*;
