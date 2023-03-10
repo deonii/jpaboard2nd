@@ -46,4 +46,10 @@ public class BoardController {
         return listBoard;
     }
 
+    @GetMapping("/board/{boardId}")
+    public BoardResponseDTO getBoard(@PathVariable Long boardId) {
+        BoardResponseDTO boardResponseDTO = boardService.getBoard(boardId);
+        return boardResponseDTO;
+    }
+
 }

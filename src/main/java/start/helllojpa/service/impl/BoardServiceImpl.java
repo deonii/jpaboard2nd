@@ -37,8 +37,18 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public BoardResponseDTO getBoard(Long id) {
+        Board board = boardDAO.getBoard(id);
+        BoardResponseDTO boardResponseDTO = BoardResponseDTO.builder()
+                .id(board.getId())
+                .userName(board.getUserName())
+                .password(board.getPassword())
+                .title(board.getTitle())
+                .content(board.getContent())
+                .replies(board.getReplies())
+                .createAt(board.getCreateAt())
+                .build();
 
-        return null;
+        return boardResponseDTO;
     }
 
     @Override
