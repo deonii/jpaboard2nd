@@ -1,6 +1,7 @@
 package start.helllojpa.data.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.istack.NotNull;
 import lombok.*;
 import start.helllojpa.data.entity.Reply;
@@ -16,6 +17,7 @@ import java.util.List;
 public class BoardRequestDTO {
 
     @NotNull
+    @JsonProperty("user_name")
     private String userName;
     @NotNull
     private String password;
@@ -25,10 +27,4 @@ public class BoardRequestDTO {
     @NotNull
     private String content;
 
-    public BoardRequestDTO(String userName, String password, String title, String content) {
-        this.userName = userName;
-        this.password = password;
-        this.title = title;
-        this.content = content;
-    }
 }

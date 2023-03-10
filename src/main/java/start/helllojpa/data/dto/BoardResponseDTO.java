@@ -2,10 +2,7 @@ package start.helllojpa.data.dto;
 
 
 import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import start.helllojpa.data.entity.Reply;
 
 import java.time.LocalDateTime;
@@ -15,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Builder
 public class BoardResponseDTO {
 
     @NotNull
@@ -31,5 +29,5 @@ public class BoardResponseDTO {
 
     private LocalDateTime createAt;
 
-    private List<Reply> replies = null;
+    private List<Reply> replies;
 }
