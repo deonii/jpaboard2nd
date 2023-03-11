@@ -1,5 +1,6 @@
 package start.helllojpa.data.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
@@ -37,6 +38,7 @@ public class Board {
     public Board() {
     }
 
+    @Builder
     public Board(String userName, String password, String title, String content) {
         this.userName = userName;
         this.password = password;

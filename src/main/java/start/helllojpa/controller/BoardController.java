@@ -6,11 +6,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import start.helllojpa.data.dto.BoardListRequestDTO;
-import start.helllojpa.data.dto.BoardRequestDTO;
-import start.helllojpa.data.dto.BoardResponseDTO;
+import start.helllojpa.data.dto.*;
 import start.helllojpa.data.entity.Board;
 import start.helllojpa.service.BoardService;
+import start.helllojpa.service.ReplyService;
 
 import javax.validation.Valid;
 import javax.xml.xpath.XPath;
@@ -22,6 +21,9 @@ public class BoardController {
 
     @Autowired
     private BoardService boardService;
+
+    @Autowired
+    private ReplyService replyService;
 
     @PostMapping("/board")
     public BoardResponseDTO createBoard(@RequestBody BoardRequestDTO boardRequestDTO) {
@@ -50,6 +52,14 @@ public class BoardController {
     public BoardResponseDTO getBoard(@PathVariable Long boardId) {
         BoardResponseDTO boardResponseDTO = boardService.getBoard(boardId);
         return boardResponseDTO;
+    }
+
+    @PostMapping("/board/{boardId}/reply")
+    public ReplyResponseDTO createReply(@PathVariable Long boardId, @RequestBody ReplyRequestDTO replyRequestDTO) {
+        System.out.println(boardId);
+        System.out.println(replyRequestDTO);
+        ReplyResponseDTO replyResponseDTO = replyService.saveReply(replyRequestDTO.getUserName(), replyRequestDTO.getPassword(), replyRequestDTO.getContent(), boardId);
+        return replyResponseDTO;
     }
 
 }
