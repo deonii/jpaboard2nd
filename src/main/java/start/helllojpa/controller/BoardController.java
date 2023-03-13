@@ -56,8 +56,6 @@ public class BoardController {
 
     @PostMapping("/board/{boardId}/reply")
     public ReplyResponseDTO createReply(@PathVariable Long boardId, @RequestBody ReplyRequestDTO replyRequestDTO) {
-        System.out.println(boardId);
-        System.out.println(replyRequestDTO);
         ReplyResponseDTO replyResponseDTO = replyService.saveReply(replyRequestDTO.getUserName(), replyRequestDTO.getPassword(), replyRequestDTO.getContent(), boardId);
         return replyResponseDTO;
     }

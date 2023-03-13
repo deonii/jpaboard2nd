@@ -1,7 +1,9 @@
 package start.helllojpa.data.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -29,16 +31,17 @@ public class Reply {
     private LocalDateTime createAt;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "board_id")
     private Board board;
 
     public Reply() {}
 
     @Builder
-    public Reply(String userName, String password, String content, Long boardId) {
+    public Reply(String userName, String password, String content, Board board) {
         this.userName = userName;
         this.password = password;
         this.content = content;
-//        this.board = boardId;
+        this.board = board;
     }
 }
